@@ -40,7 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\BiletOfisi.cs" />
+    <Compile Include="Core\IBiletlemeMotoru.cs" />
     <Compile Include="Core\ITrenListesiSaglayicisi.cs" />
+    <Compile Include="Core\RezervasyonIstegi.cs" />
+    <Compile Include="Core\RezervasyonIstekSonucu.cs" />
     <Compile Include="Core\TCDDTrenListesiServisi.cs" />
     <Compile Include="Core\Tren.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
