@@ -55,10 +55,8 @@ function RezervasyonKapsam()
 {
     this.trenler = [];
     this.rezervasyonCevabiAlindi = false;
-    this.rezervasyonBasarili = false;
-    this.rezYapilanVagonNo = 0;
-    this.rezYapilanKisiSayisi = 0;
     this.istek = {};
+    this.rezervasyonSonucu = {};
 
     this.trenleriEkle = function (trenListesi)
     {
@@ -68,17 +66,12 @@ function RezervasyonKapsam()
     this.rezervasyonSonucuIsle = function (sunucudanGelenCevap)
     {
         this.rezervasyonCevabiAlindi = true;
-        this.rezervasyonBasarili = sunucudanGelenCevap.Basarili;
-        if (this.rezervasyonBasarili)
-        {
-            this.rezYapilanVagonNo = sunucudanGelenCevap.VagonNo;
-            this.rezYapilanKisiSayisi = sunucudanGelenCevap.KisiSayisi;
-        }
+        this.rezervasyonSonucu = sunucudanGelenCevap;
     };
 
     this.rezervasyonIstegiGecerli = function ()
     {
-        if (typeof (this.istek.Tren) == 'undefined' || typeof (this.istek.KisiSayisi) == 'undefined')
+        if (typeof (this.istek.TrenAdi) == 'undefined' || typeof (this.istek.KisiSayisi) == 'undefined')
             return false;
         return true;
     };
