@@ -1,5 +1,8 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.SessionState;
+using Newtonsoft.Json;
+using TrenRezervasyon.Core;
 
 namespace TrenRezervasyonWeb.HttpHandlers
 {
@@ -22,7 +25,9 @@ namespace TrenRezervasyonWeb.HttpHandlers
 
 		private void trenleriAl(HttpResponse response)
 		{
-			response.Write("[{ \"Ad\": \"Fatih Ekspresi\" }, { \"Ad\": \"Doğu Ekspresi\" }, { \"Ad\": \"Başkent Ekspresi\" }]");
+			TCDDTrenListesiServisi trenListesiServisi = new TCDDTrenListesiServisi();
+			List<Tren> trenler = trenListesiServisi.TrenListesiAl();
+			response.Write(JsonConvert.SerializeObject(trenler));
 		}
 		
 		private void rezervasyonYap(HttpResponse response, HttpRequest request)

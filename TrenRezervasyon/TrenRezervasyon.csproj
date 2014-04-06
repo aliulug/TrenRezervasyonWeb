@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Core\BiletOfisi.cs" />
     <Compile Include="Core\ITrenListesiSaglayicisi.cs" />
+    <Compile Include="Core\TCDDTrenListesiServisi.cs" />
     <Compile Include="Core\Tren.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
