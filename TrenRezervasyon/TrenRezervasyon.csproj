@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\BiletlemeMotoru.cs" />
     <Compile Include="Core\BiletOfisi.cs" />
     <Compile Include="Core\IBiletlemeMotoru.cs" />
     <Compile Include="Core\ITrenListesiSaglayicisi.cs" />

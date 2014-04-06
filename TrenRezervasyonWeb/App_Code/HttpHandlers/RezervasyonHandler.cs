@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Web;
 using System.Web.SessionState;
 using Newtonsoft.Json;
@@ -25,14 +26,32 @@ namespace TrenRezervasyonWeb.HttpHandlers
 
 		private void trenleriAl(HttpResponse response)
 		{
-			TCDDTrenListesiServisi trenListesiServisi = new TCDDTrenListesiServisi();
-			List<Tren> trenler = trenListesiServisi.TrenListesiAl();
+			ITrenListesiSaglayicisi trenListesiSaglayicisi = trenListesiSaglayicisiYarat();
+			List<Tren> trenler = trenListesiSaglayicisi.TrenListesiAl();
 			response.Write(JsonConvert.SerializeObject(trenler));
 		}
-		
+
 		private void rezervasyonYap(HttpResponse response, HttpRequest request)
 		{
-			response.Write("{\"Basarili\":true,\"VagonNo\":3,\"KisiSayisi\":1}");
+			RezervasyonIstegi gelenRezervasyonIstegi = JsonConvert.DeserializeObject<RezervasyonIstegi>(new StreamReader(request.InputStream).ReadToEnd());
+			BiletOfisi biletOfisi = biletOfisiYarat();
+			RezervasyonIstekSonucu istekSonucu = biletOfisi.RezervasyonYap(gelenRezervasyonIstegi);
+			response.Write(JsonConvert.SerializeObject(istekSonucu));
+		}
+
+		private BiletOfisi biletOfisiYarat()
+		{
+			return new BiletOfisi(trenListesiSaglayicisiYarat(), biletlemeMotoruYarat());
+		}
+
+		private IBiletlemeMotoru biletlemeMotoruYarat()
+		{
+			return new BiletlemeMotoru();
+		}
+
+		private TCDDTrenListesiServisi trenListesiSaglayicisiYarat()
+		{
+			return new TCDDTrenListesiServisi();
 		}
 
 		public bool IsReusable { get; private set; }
