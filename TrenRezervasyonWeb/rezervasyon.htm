@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="trenRezervasyonApp">
+<head>
+    <title>Tren Rezervasyon</title>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/trenRezervasyon.js"></script>
+</head>
+<body ng-controller="TrenRezervasyonCtrl">
+    <div>
+        <form>
+            <h2>Tren Rezervasyonunuzu Hemen Yapın!</h2>
+            
+            <select ng-model="trenAdi">
+                <option value="" disabled selected>Tren Seçiniz</option>
+                <option ng-repeat="tren in RezervasyonKapsam.trenler" value="{{tren.Ad}}">{{tren.Ad}}</option>
+            </select>
+            
+            <select ng-model="kisiSayisi">
+                <option value="" disabled selected>Kişi Sayısı Seçiniz</option>
+                <option ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" value="{{i}}">{{i}}</option>
+            </select>
+            
+            <button type="submit" ng-click="rezervasyonYap();">Rezervasyon Yap</button>
+        </form>
+        
+        <div ng-show="RezervasyonKapsam.rezervasyonCevabiAlindi && RezervasyonKapsam.rezervasyonBasarili">
+            Rezervasyon Başarılı... Vagon No: {{RezervasyonKapsam.rezYapilanVagonNo}} - Kişi Sayısı: {{RezervasyonKapsam.rezYapilanKisiSayisi}}
+        </div>
+        
+        <div ng-show="RezervasyonKapsam.rezervasyonCevabiAlindi && !RezervasyonKapsam.rezervasyonBasarili">
+            Rezervasyon Başarısız...
+        </div>
+    </div>
+</body>
+</html>
