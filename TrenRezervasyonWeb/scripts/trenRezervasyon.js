@@ -78,7 +78,7 @@ function RezervasyonKapsam()
 
     this.rezervasyonIstegiGecerli = function ()
     {
-        if (typeof (this.istek.tren) == 'undefined' || typeof (this.istek.kisiSayisi) == 'undefined')
+        if (typeof (this.istek.Tren) == 'undefined' || typeof (this.istek.KisiSayisi) == 'undefined')
             return false;
         return true;
     };
