@@ -12,11 +12,11 @@
     <div class="container">
         <form class="form-rezervasyon" role="form">
             <h2 class="form-rezervasyon-heading">Tren Rezervasyonunuzu Hemen Yapın!</h2>
-            <select ng-model="trenAdi" class="form-control">
+            <select ng-model="RezervasyonKapsam.istek.tren" class="form-control">
                 <option value="" disabled selected>Tren Seçiniz</option>
                 <option ng-repeat="tren in RezervasyonKapsam.trenler" value="{{tren.Ad}}">{{tren.Ad}}</option>
             </select>
-            <select ng-model="kisiSayisi" class="form-control">
+            <select ng-model="RezervasyonKapsam.istek.kisiSayisi" class="form-control">
                 <option value="" disabled selected>Kişi Sayısı Seçiniz</option>
                 <option ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" value="{{i}}">{{i}}</option>
             </select>
